@@ -36,8 +36,8 @@ def display_program_info():
 
     print(BANNER)
 
-    creator = Colors.BOLD + "1mR007" + Colors.ENDC
-    github_link = Colors.BOLD + "github.com/1mR007" + Colors.ENDC
+    creator = Colors.BOLD + "0xMR007" + Colors.ENDC
+    github_link = Colors.BOLD + "github.com/0xMR007" + Colors.ENDC
 
     # Displaying information
     print(f"Creator : {creator}")

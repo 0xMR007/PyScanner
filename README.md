@@ -1,26 +1,27 @@
-# PyScanner 🔍⚡
+# PyScanner
+
 [![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://github.com/YourUsername/PyScanner) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0.html)
 
 A fast TCP port scanner written in Python, designed to be user-friendly while offering advanced features using the `python-nmap` library and the NVD API for vulnerability scanning.
 
-## 🚀 Features
+## Features
 
-- 🔍 **Port Scanning**: Analyze open ports on a target.
-- 🌍 **CIDR Scanning**: Discover hosts on a network using CIDR notation.
-- 🛠️ **OS & Service Detection**: Identify active services.
-- 🏷️ **Version Detection**: Option to extract service versions (`-sV`).
-- 🔒 **Vulnerability Scanning**: Check detected services for known vulnerabilities (`-V`).
-- 📊 **Threat Assessment**: Provides an overall threat level assessment based on found vulnerabilities.
-- 📄 **Report Exporting**: Generate detailed reports in JSON or TXT format.
-- ⚡ **Fast**: Uses threads & batch processing to speed up the scan.
+- **Port Scanning**: Analyze open ports on a target.
+- **CIDR Scanning**: Discover hosts on a network using CIDR notation.
+- **OS & Service Detection**: Identify active services.
+- **Version Detection**: Option to extract service versions (`-sV`).
+- **Vulnerability Scanning**: Check detected services for known vulnerabilities (`-V`).
+- **Threat Assessment**: Provides an overall threat level assessment based on found vulnerabilities.
+- **Report Exporting**: Generate detailed reports in JSON or TXT format.
+- **Fast**: Uses threads and batch processing to speed up the scan.
 
-## ⚠️ Responsible Usage
+## Responsible Usage
 
-***PyScanner*** is intended for legal use by IT professionals. Ensure you have authorization before scanning a network. Malicious use of this tool is strictly prohibited, and you assume full responsibility for its usage.
+**_PyScanner_** is intended for legal use by IT professionals. Ensure you have authorization before scanning a network. Malicious use of this tool is strictly prohibited, and you assume full responsibility for its usage.
 
-## 🛠️ Installation
+## Installation
 
-### 🐟 Prerequisites
+### Prerequisites
 
 - Python **3.7 or later**
 - **Nmap** (required for some advanced options)
@@ -34,53 +35,56 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-### ⚙️ Installing Nmap
+### Installing Nmap
 
-| System | Command |
-|----------|----------|
-| **Debian/Ubuntu** | `sudo apt-get install nmap` |
-| **CentOS/RHEL** | `sudo yum install nmap` |
-| **macOS** | `brew install nmap` |
-| **Windows** | [Install from nmap.org](https://nmap.org/) |
+| System            | Command                                    |
+| ----------------- | ------------------------------------------ |
+| **Debian/Ubuntu** | `sudo apt-get install nmap`                |
+| **CentOS/RHEL**   | `sudo yum install nmap`                    |
+| **macOS**         | `brew install nmap`                        |
+| **Windows**       | [Install from nmap.org](https://nmap.org/) |
 
-## 📌 Usage
+## Usage
 
-| Option  | Description  | Example  |
-|---------|-------------|----------|
-| `-t` | Scan a target | `python3 -m src.PyScanner -t scanme.nmap.org` |
-| `-p` | Specify a port range (20-1000) | `python3 -m src.PyScanner -t 192.168.1.1 -p 20-1000` |
-| `-sV` | Detect service versions | `python3 -m src.PyScanner -t 192.168.1.1 -sV` |
-| `-V` | Check for vulnerabilities (requires -sV) | `python3 -m src.PyScanner -t 192.168.1.1 -sV -V` |
-| `-n` | Discover hosts on a network | `python3 -m src.PyScanner -n 192.168.1.0/24` |
-| `-Pn` | Scan without initial ping | `python3 -m src.PyScanner -t 192.168.1.1 -Pn` |
+| Option     | Description                                | Example                                                                |
+| ---------- | ------------------------------------------ | ---------------------------------------------------------------------- |
+| `-t`       | Scan a target                              | `python3 -m src.PyScanner -t scanme.nmap.org`                          |
+| `-p`       | Specify a port range (20-1000)             | `python3 -m src.PyScanner -t 192.168.1.1 -p 20-1000`                   |
+| `-sV`      | Detect service versions                    | `python3 -m src.PyScanner -t 192.168.1.1 -sV`                          |
+| `-V`       | Check for vulnerabilities (requires -sV)   | `python3 -m src.PyScanner -t 192.168.1.1 -sV -V`                       |
+| `-n`       | Discover hosts on a network                | `python3 -m src.PyScanner -n 192.168.1.0/24`                           |
+| `-Pn`      | Scan without initial ping                  | `python3 -m src.PyScanner -t 192.168.1.1 -Pn`                          |
 | `--apikey` | Provide NVD API key for better rate limits | `python3 -m src.PyScanner -t 192.168.1.1 -sV -V --apikey YOUR_API_KEY` |
-| `--txt` | Export results to a TXT file | `python3 -m src.PyScanner -t 192.168.1.1 --txt report.txt` |
-| `--json` | Export results to a JSON file | `python3 -m src.PyScanner -t 192.168.1.1 --json report.json` |
+| `--txt`    | Export results to a TXT file               | `python3 -m src.PyScanner -t 192.168.1.1 --txt report.txt`             |
+| `--json`   | Export results to a JSON file              | `python3 -m src.PyScanner -t 192.168.1.1 --json report.json`           |
 
-
-### 🔹 Examples
+### Examples
 
 **Basic scan**:
+
 ```bash
 python3 -m src.PyScanner -t <target>
 ```
 
 **Scan with version detection**:
+
 ```bash
 python3 -m src.PyScanner -t <target> -sV
 ```
 
 **Complete vulnerability scan**:
+
 ```bash
 python3 -m src.PyScanner -t <target> -sV -V
 ```
 
 **Network scan for host discovery**:
+
 ```bash
 python3 -m src.PyScanner -n 192.168.1.0/24
 ```
 
-## 📝 Example Output
+## Example Output
 
 ```
 PyScanner scan report for 45.33.32.156 (scanme.nmap.org):
@@ -109,7 +113,7 @@ Recommendations:
 
 VULNERABILITY SUMMARY:
 ------------------------------------------------------------
-Found 1 potential vulnerabilities across all services:
+Found 1 potential vulnerability across all services:
  • Critical: 0
  • High: 1
  • Medium: 0
@@ -125,21 +129,21 @@ Detailed vulnerability information saved to 45.33.32.156_vulnerabilities.json
 
 > **Note**: This scan was performed on scanme.nmap.org, an official server provided by Nmap for testing purposes. No unauthorized testing was conducted on third-party infrastructures. The displayed vulnerabilities are potential findings that require in-depth analysis before drawing any conclusions. This project is purely educational and intended for learning purposes.
 
-## 🖥️ Screenshots
+## Screenshots
 
 <div style="display: flex; gap:10px;">
    <img src="assets/screen-1.png" alt="Screenshot-1" width="500">
    <img src="assets/screen-2.png" alt="Screenshot-2" width="500">
 </div>
 
-## 📢 Notes
+## Notes
 
-- ⚡ If the target does not respond, *PyScanner* will indicate that the host seems unreachable.
-- 🚫 If the target blocks ICMP requests, using `-Pn` might help.
-- 🛠️ Some advanced options require **Nmap**.
-- 🔐 The NVD API has rate limits (5 requests per 30 seconds without an API key). For better performance, obtain an API key from [NVD](https://nvd.nist.gov/developers/request-an-api-key).
+- If the target does not respond, _PyScanner_ will indicate that the host seems unreachable.
+- If the target blocks ICMP requests, using `-Pn` might help.
+- Some advanced options require **Nmap**.
+- The NVD API has rate limits (5 requests per 30 seconds without an API key). For better performance, obtain an API key from [NVD](https://nvd.nist.gov/developers/request-an-api-key).
 
-## 📚 Important Files
+## Important Files
 
 - `PyScanner.py` : Main scanner script.
 - `src/utils/scanning.py` : Functions for port scanning, network discovery, and vulnerability scanning.
@@ -149,14 +153,14 @@ Detailed vulnerability information saved to 45.33.32.156_vulnerabilities.json
 - `requirements.txt` : List of Python dependencies.
 - `README.md` : This documentation file.
 
-## 💡 NVD API
+## NVD API
 
-***PyScanner*** uses the National Vulnerability Database (NVD) API to check detected services for known vulnerabilities. 
+**_PyScanner_** uses the National Vulnerability Database (NVD) API to check detected services for known vulnerabilities.
 
-The NVD API provides detailed information about vulnerabilities, including severity and potential impact. Note that the NVD API has rate limits (5 requests per 30 seconds without an API key). 
+The NVD API provides detailed information about vulnerabilities, including severity and potential impact. Note that the NVD API has rate limits (5 requests per 30 seconds without an API key).
 
 For better performance and higher rate limits, it is recommended to obtain an API key from [NVD](https://nvd.nist.gov/developers/request-an-api-key).
 
-## 📝 License
+## License
 
 This project is licensed under the **GPL v3**.
